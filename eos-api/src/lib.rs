@@ -1,13 +1,16 @@
 extern crate reqwest;
+#[macro_use]
+extern crate serde_json;
 
-use api::reqwest::Error;
-use serde_json;
+use reqwest::Error;
 use serde_json::Value;
+
 
 #[derive(Copy, Clone)]
 pub struct API {
     base_url: &'static str,
 }
+
 
 impl API {
     pub fn new(base_url: &'static str) -> API {
@@ -28,15 +31,20 @@ impl API {
         let body = &json!({ "account_name": account_name });
         self.http_post("/chain/get_account", body)
     }
-    
+
     pub fn get_abi(self, account_name: &str) -> Result<Value, Error> {
         let body = &json!({ "account_name": account_name });
         self.http_post("/chain/get_abi", body)
     }
 
-    pub fn get_block(self, block_id: u64 ) -> Result<Value, Error> {
-        let body = &json!({"block_num_or_id": block_id});
+    pub fn get_block(self, block_id: u64) -> Result<Value, Error> {
+        let body = &json!({ "block_num_or_id": block_id });
         self.http_post("/chain/get_block", body)
+    }
+
+    pub fn get_code(self, account: &str) -> Result<Value, Error> {
+        let body = &json!({"account_name": account, "code_as_wasm": false});
+        self.http_post("/chain/get_code", body)
     }
 
     pub fn get_currency_balance(
@@ -72,3 +80,6 @@ impl API {
         Ok(res)
     }
 }
+
+
+
