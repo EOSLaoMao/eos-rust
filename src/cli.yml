@@ -1,0 +1,28 @@
+name: eos-rust
+version: "0.0"
+author: lemons 
+about: Does awesome things
+args:
+    # - config:
+    #     short: c
+    #     long: config
+    #     value_name: FILE
+    #     help: Sets a custom config file
+    #     takes_value: true
+    # - INPUT:
+        # help: Sets the input file to use
+        # required: true
+        # index: 1
+    - verbose:
+        short: v
+        multiple: true
+        help: Sets the level of verbosity
+subcommands:
+    - info:
+        about: get info from eos blockchain
+        version: "0.0"
+        author: lemons
+        args:
+            - debug:
+                short: info
+                help: print debug information
