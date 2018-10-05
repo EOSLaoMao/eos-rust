@@ -1,3 +1,3 @@
 # How to use
-`cargo build --all`
-`./target/debug/eoc-cli --help`
+* `cargo build --all`
+* `./target/debug/eoc-cli --help`
