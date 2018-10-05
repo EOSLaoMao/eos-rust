@@ -1,6 +1,7 @@
 extern crate reqwest;
 #[macro_use]
 extern crate serde_json;
+extern crate serde;
 
 use reqwest::Error;
 use serde_json::Value;
@@ -9,7 +10,6 @@ use serde_json::Value;
 pub struct API {
     base_url: String,
 }
-
 
 impl API {
     pub fn new(base_url: String) -> API {

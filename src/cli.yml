@@ -22,7 +22,22 @@ subcommands:
         about: get info from eos blockchain
         version: "0.0"
         author: lemons
+    - connections:
+        about: get connections 
+    - balance:
+        about: get account balance
         args:
-            - debug:
-                short: info
-                help: print debug information
+            - account:
+                short: a
+                long: account
+                takes_value: true
+            - contract:
+                short: c
+                long: contract
+                takes_value: true
+            - symbol:
+                short: s
+                long: symbol
+                takes_value: true
+                
+
