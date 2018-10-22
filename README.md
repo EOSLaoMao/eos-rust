@@ -1,8 +1,10 @@
-# Just begin
-## How to use
- ```cargo build --all```
- 
+## How to build
 ```
+cargo build --all
+```
+
+## How to use
+``` 
 ./target/debug/eoc-cli --help
 
 USAGE:
@@ -30,6 +32,6 @@ SUBCOMMANDS:
     public: EOS6v9863knSSJ8M9umSxxxxx..........     
 
 ```
-
+The project just started, any contribution will appreciated.
 
 
