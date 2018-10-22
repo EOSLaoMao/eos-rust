@@ -8,11 +8,13 @@ authors = ["datudou <wangqianyi.cs@gmail.com>"]
 members = [
     "eos-api",
     "eos-cli",
+    "eos-keys",
 ]
 
 [dependencies]
 bytes = "0.4.9"
 eos-api = { path = "eos-api" }
+keys = { path = "eos-keys" }
 clap = {version = "2.32", features = ["yaml"]}
 
 

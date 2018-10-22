@@ -3,15 +3,6 @@ version: "0.0"
 author: lemons
 about: Does awesome things
 args:
-  #     short: c
-  #     long: config
-  #     value_name: FILE
-  #     help: Sets a custom config file
-  #     takes_value: true
-  # - INPUT:
-  # help: Sets the input file to use
-  # required: true
-  # index: 1
   - verbose:
       short: v
       multiple: true
@@ -47,3 +38,6 @@ subcommands:
         - account:
             index: 1
             required: true
+  - createkey:
+      about: create EOS key pair
+    
