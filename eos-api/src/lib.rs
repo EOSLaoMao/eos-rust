@@ -31,6 +31,7 @@ impl API {
         self.http_post("/chain/get_account", body)
     }
 
+
     pub fn get_abi(&self, account_name: &str) -> Result<Value, Error> {
         let body = &json!({ "account_name": account_name });
         self.http_post("/chain/get_abi", body)
@@ -45,6 +46,13 @@ impl API {
         let body = &json!({"account_name": account, "code_as_wasm": false});
         self.http_post("/chain/get_code", body)
     }
+
+    //history api
+    pub fn get_accounts(&self, public_key: &str) -> Result<Value, Error> {
+        let body = &json!({ "public_key": public_key });
+        self.http_post("/history/get_key_accounts", body)
+    }
+
 
     pub fn get_currency_balance(
         &self,

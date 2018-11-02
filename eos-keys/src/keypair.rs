@@ -1,15 +1,13 @@
 //! Bitcoin key pair.
-use base58::ToBase58;
 use hash::H264;
 use network::Network;
-use ripemd160::{Digest, Ripemd160};
 use secp256k1::key;
 use std::fmt;
-use {Private, Secret, SECP256K1};
+use {Private, Public, Secret, SECP256K1};
 
 pub struct KeyPair {
 	private: Private,
-	public: String,
+	pub public: Public,
 }
 
 impl fmt::Debug for KeyPair {
@@ -31,9 +29,9 @@ impl KeyPair {
 		&self.private
 	}
 
-	// pub fn public(&self) -> &Public {
-	// 	&self.public
-	// }
+	pub fn public(&self) -> &Public {
+		&self.public
+	}
 
 	// pub fn from_private(private: Private) -> Result<KeyPair, Error> {
 	// 	let context = &SECP256K1;
@@ -53,7 +51,7 @@ impl KeyPair {
 
 	// 	let keypair = KeyPair {
 	// 		private: private,
-	// 		// public: public,
+	// 		public: public,
 	// 	};
 
 	// 	Ok(keypair)
@@ -67,11 +65,6 @@ impl KeyPair {
 		let mut public = H264::default();
 		public.copy_from_slice(&serialized[0..33]);
 
-		let mut hasher = Ripemd160::new();
-		hasher.input(&serialized);
-		let result = hasher.result();
-		let eos_publickey =
-			"EOS".to_string() + &[&serialized[0..33], &result[0..4]].concat().to_base58();
 
 		KeyPair {
 			private: Private {
@@ -79,7 +72,7 @@ impl KeyPair {
 				secret: secret,
 				compressed: false,
 			},
-			public: eos_publickey,
+			public: Public::Compressed(public),
 		}
 	}
 }

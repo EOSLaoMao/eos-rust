@@ -8,4 +8,5 @@ serde_json = "1.0"
 eos-api = { path = "../eos-api" }
 keys = { path= "../eos-keys" }
 clap = {version = "2.32", features = ["yaml"]}
+yaml-rust = "0.4"
 

@@ -1,7 +1,8 @@
 use base58::ToBase58;
 use crypto::ripemd160;
-use hash::{H264, H520};
+use hash::{H160, H264, H520};
 use hex::ToHex;
+use ripemd160::{Digest, Ripemd160};
 use secp256k1::key;
 use secp256k1::{
 	Error as SecpError, Message as SecpMessage, RecoverableSignature, RecoveryId,
@@ -35,8 +36,16 @@ impl Public {
 		}
 	}
 
+	pub fn to_eos_format(&self) -> String {
+		let mut hasher = Ripemd160::new();
+		hasher.input(self.as_ref());
+		let result = hasher.result();
+		let eos_publickey =
+			"EOS".to_string() + &[&self.as_ref(), &result[0..4]].concat().to_base58();
+		eos_publickey
+	}
+
 	pub fn address_hash(&self) -> AddressHash {
-		// dhash160(self)
 		ripemd160(self)
 	}
 
@@ -109,6 +118,6 @@ impl fmt::Debug for Public {
 
 impl fmt::Display for Public {
 	fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-		self.to_hex::<String>().fmt(f)
+		self.to_eos_format().fmt(f)
 	}
 }

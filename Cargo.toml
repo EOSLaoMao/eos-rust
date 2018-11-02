@@ -9,6 +9,7 @@ members = [
     "eos-api",
     "eos-cli",
     "eos-keys",
+    "eos-wallet",
 ]
 
 [dependencies]
