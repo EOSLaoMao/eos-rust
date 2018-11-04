@@ -5,27 +5,25 @@ cargo build --all
 
 ## How to use
 ``` 
-./target/debug/eoc-cli --help
+./target/debug/eoc-cli 
+
 
 USAGE:
-    eos-cli [FLAGS] [SUBCOMMAND]
+    eos-cli <SUBCOMMAND>
 
 FLAGS:
     -h, --help       Prints help information
     -V, --version    Prints version information
-    -v               Sets the level of verbosity
 
 SUBCOMMANDS:
-    account        get account info
-    balance        get account balance
-    connections    get connections
-    createkey      create EOS key pair
-    help           Prints this message or the help of the given subcommand(s)
-    info           get info from eos blockchain
+    get       Retrieve various items and information from the blockchain
+    help      Prints this message or the help of the given subcommand(s)
+    wallet    Interact with local wallet
 ```
+
 ## Example
 ``` 
-    ./target/debug/eoc-cli createkeys
+    ./target/debug/eoc-cli wallet create_key
 
     Terminal Output: 
     private: 5K2RgdF6vKC6CQNpqebxxxxx.........
