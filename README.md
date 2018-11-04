@@ -30,6 +30,6 @@ SUBCOMMANDS:
     public: EOS6v9863knSSJ8M9umSxxxxx..........     
 
 ```
-The project just started, any contribution will appreciated.
+The project just started, any contribution will be appreciated.
 
 
