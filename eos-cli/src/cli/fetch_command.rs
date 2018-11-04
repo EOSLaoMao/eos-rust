@@ -4,7 +4,7 @@ use eos_api::API;
 pub fn fetch_command() -> App<'static, 'static> {
     App::new("get")
         .about("get info")
-        .setting(AppSettings::SubcommandRequired)
+        .setting(AppSettings::SubcommandRequiredElseHelp)
         .subcommand(SubCommand::with_name("info").about("get eos info"),)
         .subcommand(
             SubCommand::with_name("connections").about("get connections from eos blockchain"),

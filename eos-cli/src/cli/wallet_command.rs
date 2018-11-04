@@ -1,4 +1,4 @@
-use clap::{App, ArgMatches, SubCommand, AppSettings};
+use clap::{App, AppSettings, ArgMatches, SubCommand};
 use keys::generator::Generator;
 use keys::generator::Random;
 use keys::Network::Mainnet;

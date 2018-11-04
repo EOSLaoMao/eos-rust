@@ -5,10 +5,9 @@ extern crate serde_json;
 extern crate yaml_rust;
 
 mod cli;
-use cli::{build_cli, fetch_processor,wallet_processor};
+use cli::{build_cli, fetch_processor, wallet_processor};
 
 fn main() {
-
     let matches = build_cli();
 
     if let Err(_err) = match matches.subcommand() {
